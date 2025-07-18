@@ -1,0 +1,14 @@
+together-ai:
+  host: 'https://api.together.xyz'
+  api-key: ${TOGETHER_AI_API_KEY}
+  timeout: 30
+
+gemini-ai:
+  host: 'https://generativelanguage.googleapis.com'
+  api-key: ${GEMINI_AI_API_KEY}
+  timeout: 30
+spring:
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/postgres'
+    username: 'postgres'
+    password: 'postgres'
