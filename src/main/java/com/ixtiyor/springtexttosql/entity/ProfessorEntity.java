@@ -14,11 +14,11 @@ public class ProfessorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "title")
     private String title;
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private DepartmentEntity department;
 }

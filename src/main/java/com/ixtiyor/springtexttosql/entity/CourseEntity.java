@@ -14,7 +14,7 @@ public class CourseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -22,6 +22,6 @@ public class CourseEntity {
     @Column(name = "credits")
     private Integer credits;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private DepartmentEntity department;
 }

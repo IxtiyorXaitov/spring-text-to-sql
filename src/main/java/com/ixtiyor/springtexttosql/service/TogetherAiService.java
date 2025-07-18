@@ -20,7 +20,7 @@ public class TogetherAiService {
     private final ObjectMapper mapper = new ObjectMapper();
 
 
-    private String sendRequest(TogetherApiReqDTO prompt) {
+    public String sendRequest(TogetherApiReqDTO prompt) {
         try {
             String body = mapper.writeValueAsString(prompt);
 

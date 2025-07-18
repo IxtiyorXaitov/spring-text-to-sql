@@ -19,7 +19,7 @@ public class GeminiService {
     private final GeminiAiProperties properties;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    private Object sendToGemini(GeminiRequestDTO prompt, String model) {
+    public String sendToGemini(GeminiRequestDTO prompt, String model) {
         try {
             String body = mapper.writeValueAsString(prompt);
 
