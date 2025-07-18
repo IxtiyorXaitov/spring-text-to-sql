@@ -1,4 +1,4 @@
-package com.ixtiyor.springtexttosql.dto;
+package com.ixtiyor.springtexttosql.dto.provider;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.ixtiyor.springtexttosql.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ixtiyor.springtexttosql.dto.TogetherApiReqDTO;
+import com.ixtiyor.springtexttosql.dto.provider.TogetherApiReqDTO;
 import com.ixtiyor.springtexttosql.properties.TogetherAiProperties;
 import lombok.RequiredArgsConstructor;
 import okhttp3.*;

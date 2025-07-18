@@ -1,7 +1,7 @@
 package com.ixtiyor.springtexttosql.service;
 
-import com.ixtiyor.springtexttosql.dto.GeminiRequestDTO;
-import com.ixtiyor.springtexttosql.dto.TogetherApiReqDTO;
+import com.ixtiyor.springtexttosql.dto.provider.GeminiRequestDTO;
+import com.ixtiyor.springtexttosql.dto.provider.TogetherApiReqDTO;
 import com.ixtiyor.springtexttosql.enums.AiProviderEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.ixtiyor.springtexttosql.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ixtiyor.springtexttosql.dto.GeminiRequestDTO;
+import com.ixtiyor.springtexttosql.dto.provider.GeminiRequestDTO;
 import com.ixtiyor.springtexttosql.properties.GeminiAiProperties;
 import lombok.RequiredArgsConstructor;
 import okhttp3.*;
