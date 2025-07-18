@@ -37,7 +37,7 @@ public class SqlService {
         }
 
         String sql = geminiResponse.candidates.getFirst().content.parts.getFirst().text.trim().replaceAll("[\\n\\r]+", " ");
-
+        System.err.println(sql);
         if (!sql.toUpperCase().startsWith("SELECT")) {
             throw new IllegalArgumentException("Only SELECT statements are allowed.");
         }
@@ -58,7 +58,7 @@ public class SqlService {
         }
 
         String sql = choices.get(0).path("message").path("content").asText().trim();
-
+        System.err.println(sql);
         sql = sql.replaceAll("[\\r\\n]+", " ").replaceAll(" +", " ").trim();
 
         if (!sql.toUpperCase().startsWith("SELECT")) {

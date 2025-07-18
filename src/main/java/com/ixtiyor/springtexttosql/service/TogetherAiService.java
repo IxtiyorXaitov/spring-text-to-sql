@@ -21,7 +21,7 @@ public class TogetherAiService {
     public String sendRequest(TogetherApiReqDTO prompt) {
         try {
             String body = mapper.writeValueAsString(prompt);
-
+            System.err.println(body);
             Request request = new Request.Builder()
                     .addHeader("Authorization", "Bearer " + properties.getApiKey())
                     .addHeader("Content-Type", "application/json")

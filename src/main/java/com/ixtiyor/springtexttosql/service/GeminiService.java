@@ -20,7 +20,7 @@ public class GeminiService {
     public String sendToGemini(GeminiRequestDTO prompt, String model) {
         try {
             String body = mapper.writeValueAsString(prompt);
-
+            System.err.println(body);
             Request request = new Request.Builder()
                     .addHeader("X-goog-api-key", properties.getApiKey())
                     .addHeader("Content-Type", "application/json")

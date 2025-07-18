@@ -29,18 +29,9 @@ public class TextToSqlService {
             "If the schema does not support answering the question, respond with: " +
             "\"The current schema does not contain enough information to answer this question.\"";
 
-    private String prompt = "### Database Schema " +
-            "department(id, name, building) " +
-            "professor(id, name, title, department_id) " +
-            "student(id, name, email, enrollment_year) " +
-            "course(id, name, credits, department_id) " +
-            "course_professor(id, professor_id, course_id, semester, year) " +
-            "course_student(id, student_id, course_id, grade, semester, year) " +
-            "### Question %s " +
-            "### SQL";
 
     public String generateSql(AiProviderEnum provider, String model, String userMessage) {
-        prompt = String.format(prompt, userMessage);
+        String prompt = getPrompt(userMessage);
         String sql = null;
         if (AiProviderEnum.GEMINI.equals(provider)) {
             sql = geminiService.sendToGemini(new GeminiRequestDTO(systemPrompt, prompt), model);
@@ -48,5 +39,19 @@ public class TextToSqlService {
             sql = togetherAiService.sendRequest(new TogetherApiReqDTO(model, systemPrompt, prompt));
         }
         return sql;
+    }
+
+    private static String getPrompt(String userMessage) {
+        String prompt = "### Database Schema " +
+                "department(id, name, building) " +
+                "professor(id, name, title, department_id) " +
+                "student(id, name, email, enrollment_year) " +
+                "course(id, name, credits, department_id) " +
+                "course_professor(id, professor_id, course_id, semester, year) " +
+                "course_student(id, student_id, course_id, grade, semester, year) " +
+                "### Question %s " +
+                "### SQL";
+        prompt = String.format(prompt, userMessage);
+        return prompt;
     }
 }
