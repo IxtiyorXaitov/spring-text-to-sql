@@ -17,7 +17,7 @@ public class TextToSqlService {
             "Convert user questions into valid, optimized PostgreSQL SELECT queries based on the schema provided below. " +
             "Only return SELECT statements. " +
             "Output only the raw SQL query, beginning with the word SELECT. " +
-            "The SELECT clause must only return the id column from the main result table. " +
+//            "The SELECT clause must only return the id column from the main result table. " +
             "Do not wrap the query in code blocks. " +
             "Do not include comments, explanations, or formatting. " +
             "For JOIN operations, prefix all column names with their respective table names. " +
