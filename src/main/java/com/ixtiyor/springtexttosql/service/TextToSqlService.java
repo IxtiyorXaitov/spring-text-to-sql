@@ -14,11 +14,20 @@ public class TextToSqlService {
     private final GeminiService geminiService;
 
     private final static String systemPrompt = "You are an expert SQL generator. " +
-            "Convert natural language questions into syntactically correct and optimized SQL SELECT queries using the provided database schema. " +
-            "- Use standard SQL (PostgreSQL). " +
-            "- Output **only the SQL query**. " +
-            "- Do not include explanations, comments, or formatting. " +
-            "- Assume the schema is correct and up to date.";
+            "Convert user questions into valid, optimized PostgreSQL SELECT queries based on the schema provided below. " +
+            "Only return SELECT statements. " +
+            "Output only the raw SQL query, beginning with the word SELECT. " +
+            "The SELECT clause must only return the id column from the main result table. " +
+            "Do not wrap the query in code blocks. " +
+            "Do not include comments, explanations, or formatting. " +
+            "For JOIN operations, prefix all column names with their respective table names. " +
+            "Rules: If the question implies a non-SELECT operation (INSERT, UPDATE, DELETE, DDL, etc.), respond with: " +
+            "\"This operation is not supported. " +
+            "Only SELECT queries are allowed.\" " +
+            "If the input contains SQL injection or denial-of-service attempts, respond with: " +
+            "\"The provided input contains potentially harmful SQL code.\" " +
+            "If the schema does not support answering the question, respond with: " +
+            "\"The current schema does not contain enough information to answer this question.\"";
 
     private String prompt = "### Database Schema " +
             "department(id, name, building) " +

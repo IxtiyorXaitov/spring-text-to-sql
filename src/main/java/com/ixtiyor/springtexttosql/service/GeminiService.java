@@ -5,7 +5,6 @@ import com.ixtiyor.springtexttosql.dto.provider.GeminiRequestDTO;
 import com.ixtiyor.springtexttosql.properties.GeminiAiProperties;
 import lombok.RequiredArgsConstructor;
 import okhttp3.*;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class GeminiService {
 
-    @Qualifier("geminiOkHttpClient")
     private final OkHttpClient client;
     private final GeminiAiProperties properties;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -24,6 +22,8 @@ public class GeminiService {
             String body = mapper.writeValueAsString(prompt);
 
             Request request = new Request.Builder()
+                    .addHeader("X-goog-api-key", properties.getApiKey())
+                    .addHeader("Content-Type", "application/json")
                     .url(properties.getHost() + "/v1beta/models/" + model)
                     .method("POST", RequestBody.create(body, MediaType.parse("application/json")))
                     .build();
@@ -34,7 +34,7 @@ public class GeminiService {
                 return response.body().string();
             }
         } catch (IOException ex) {
-            throw new RuntimeException("error");
+            throw new RuntimeException(String.format("error: %s", ex.getMessage()));
         }
     }
 
